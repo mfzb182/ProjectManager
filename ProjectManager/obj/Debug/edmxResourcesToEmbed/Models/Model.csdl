@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Activities" EntityType="Model.Activity" />
+    <EntitySet Name="Employees" EntityType="Model.Employee" />
+    <EntitySet Name="Projects" EntityType="Model.Project" />
+    <AssociationSet Name="EmployeeProject" Association="Model.EmployeeProject">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="TypeProject" Association="Model.TypeProject">
+      <End Role="Type" EntitySet="Activities" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <NavigationProperty Name="Projects" Relationship="Model.TypeProject" FromRole="Type" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Fullname" Type="String" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <NavigationProperty Name="Projects" Relationship="Model.EmployeeProject" FromRole="Employee" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="End" Type="String" Nullable="false" />
+    <Property Name="Start" Type="String" Nullable="false" />
+    <Property Name="Abstract" Type="String" Nullable="false" />
+    <Property Name="Score" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Model.EmployeeProject" FromRole="Project" ToRole="Employee" />
+    <Property Name="EmployeeUsername" Type="String" Nullable="false" />
+    <NavigationProperty Name="Type" Relationship="Model.TypeProject" FromRole="Project" ToRole="Type" />
+    <Property Name="TypeId" Type="Guid" Nullable="false" />
+  </EntityType>
+  <Association Name="EmployeeProject">
+    <End Type="Model.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="Model.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="EmployeeUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TypeProject">
+    <End Type="Model.Activity" Role="Type" Multiplicity="1" />
+    <End Type="Model.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

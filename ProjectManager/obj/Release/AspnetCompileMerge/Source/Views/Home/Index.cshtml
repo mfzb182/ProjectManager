@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "پروژه بزرگ شهربرفی";
+}
+<script src="~/Scripts/Chart.min.js"></script>
+<link href="~/Content/Home-Index.css" rel="stylesheet" />
+<h1>سهم هر مدیر در پیشرفت پروژه شهربرفی</h1>
+<canvas id="chart" width="300" height="300" />
+<script>
+    var pieData = @Html.Raw(ViewBag.Stat);
+    window.onload = function () {
+        var ctx = document.getElementById("chart").getContext("2d");
+        window.myPie = new Chart(ctx).Pie(pieData);
+    };
+</script>

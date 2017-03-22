@@ -1,0 +1,30 @@
+﻿@model ProjectManager.Models.Activity
+
+@{
+    ViewBag.Title = "ایجاد";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>فعالیت</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <p>
+            <input type="submit" value="ایجاد" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("بازگشت", "Index")
+</div>

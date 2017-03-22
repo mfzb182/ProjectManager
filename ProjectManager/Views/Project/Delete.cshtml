@@ -1,0 +1,44 @@
+﻿@model ProjectManager.Models.Project
+
+@{
+    ViewBag.Title = "حذف";
+}
+
+<fieldset>
+    <legend>پروژه</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Score)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Score)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Employee.Fullname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Employee.Fullname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Type.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type.Title)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="حذف" />
+        @Html.ActionLink("بازگشت", "Index")
+    </p>
+}

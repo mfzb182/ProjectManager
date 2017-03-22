@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header>
+<h1>مدیریت پروژه های شهر برفی</h1>
+@try
+{
+    <h2>@Session["Username"].ToString()</h2>
+}catch{}
+</header>
+@RenderBody()

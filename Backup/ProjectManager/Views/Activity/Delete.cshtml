@@ -1,0 +1,23 @@
+﻿@model ProjectManager.Models.Activity
+
+@{
+    ViewBag.Title = "حذف";
+}
+
+<fieldset>
+    <legend>فعالیت</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="حذف" />
+        @Html.ActionLink("بازگشت", "Index")
+    </p>
+}

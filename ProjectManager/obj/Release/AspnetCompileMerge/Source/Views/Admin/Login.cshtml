@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "سامانه احراز هویت مرکزی آبنبات";
+}
+@if (ViewBag.Username != "" && ViewBag.Username != null)
+{
+    <div>
+        شما به عنوان @ViewBag.Username آنلاین هستید
+    </div>
+}
+else
+{
+    <a href="~/Admin/Login">وارد شوید</a>
+}

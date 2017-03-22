@@ -1,0 +1,62 @@
+﻿@model ProjectManager.Models.Project
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+<fieldset>
+    <legend>پروژه</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.End)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.End)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Start)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Start)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Abstract)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Abstract)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Score)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Score)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Employee.Fullname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Employee.Fullname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Type.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type.Title)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id=Model.Id })
+    @Html.ActionLink("بازگشت", "Index")
+</p>

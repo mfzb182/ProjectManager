@@ -1,0 +1,72 @@
+﻿@model ProjectManager.Models.Project
+
+@{
+    ViewBag.Title = "ایجاد";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>پروژه</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Start)
+        </div>
+        <div class="editor-field">
+            <input type="number" value="@DateTime.Now.Year" name="Year" />
+            <input type="number" value="@DateTime.Now.Month" name="Month" />
+            <input type="number" value="@DateTime.Now.Day" name="Day" />
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Abstract)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Abstract)
+            @Html.ValidationMessageFor(model => model.Abstract)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Score)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Score)
+            @Html.ValidationMessageFor(model => model.Score)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmployeeUsername, "Employee")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EmployeeUsername", String.Empty)
+            @Html.ValidationMessageFor(model => model.EmployeeUsername)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TypeId, "Type")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TypeId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TypeId)
+        </div>
+
+        <p>
+            <input type="submit" value="ایجاد" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("بازگشت", "Index")
+</div>
+

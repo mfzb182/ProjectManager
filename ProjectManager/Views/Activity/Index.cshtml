@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ProjectManager.Models.Activity>
+
+@{
+    ViewBag.Title = "فعالیت";
+}
+
+<p>
+    @Html.ActionLink("ایجاد", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.ActionLink("ویرایش", "Edit", new { id = item.Id })
+            @Html.ActionLink("حذف", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
